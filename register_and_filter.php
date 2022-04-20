@@ -8,12 +8,8 @@
 .header {
     text-align: center;
     font-weight: bold;
-    font-size: 30px;
-    margin: 0; 
-    margin-bottom: 20px;
-    padding: 15px 60px;
-    width: 100%;
-    margin-right: 5px;
+    
+    
 }
  </style>
 <div class= "header">
