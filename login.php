@@ -11,9 +11,9 @@
         
 	//establish connection info
     $server = "localhost";// your server
-    $userid = ""; // your user id
-    $pw = ""; // your pw
-    $db= ""; // your database
+    $userid = "upmro5wv5djmy"; // your user id
+    $pw = "eb4a8d8urcyj"; // your pw
+    $db= "dbdhodggsm9tll"; // your database
         
     //Get user's information
     $_SESSION["id"] = $_POST["id"];
