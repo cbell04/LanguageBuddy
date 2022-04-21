@@ -18,6 +18,7 @@
 </head>
 <body>
 <?php 
+// add user to database
 $name = $_REQUEST["name"];
 $email = $_REQUEST["email"];
 $phone = $_REQUEST["phone"];
@@ -34,4 +35,40 @@ echo $new_lang;
        <th>Language Spoken</th>
        <th>Language Learning</th>
      </tr>
+<?php 
+//create table of matches
+//establish connection info
+    $server = "localhost";// your server
+    $userid = "upmro5wv5djmy"; // your user id
+    $pw = "eb4a8d8urcyj"; // your pw
+    $db= "dbdhodggsm9tll"; // your database
+    
+    // Create connection
+    $conn = new mysqli($server, $userid, $pw);
+
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    echo "Connected successfully<br>";
+
+    //select the database
+    $conn->select_db($db);
+    
+
+// ask what the variable names for spoken and new language are
+$sql = "SELECT * FROM users WHERE spoken_lang= $new_lang AND new_lang = $spoken_lang";
+$result = $conn->query($sql);
+
+//get results
+if ($result->num_rows > 0) 
+{   
+
+while($row = $result->fetch_assoc()) 
+{  
+    echo "<tr><td>$row["name"]</td><td>$row["email"]</td>$row["spoken_lang"]<td></td>".
+    "<td>$row["new_lang"]</td></tr>";
+}
+}
+ ?>
 </table>
