@@ -11,6 +11,17 @@
     
     
 }
+table {
+    border: solid 1px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+th {
+}
+td {
+  text-align: center;
+}
  </style>
 <div class= "header">
     <h1>Congrats! You're Registered. Now, Find a Buddy!</h1>
@@ -24,11 +35,11 @@ $email = $_REQUEST["email"];
 $phone = $_REQUEST["phone"];
 $spoken_lang = $_REQUEST["spoken_lang"];
 $new_lang = $_REQUEST["new_lang"];
-echo $email;
-echo $spoken_lang;
-echo $new_lang;
+// echo $email;
+// echo $spoken_lang;
+// echo $new_lang;
  ?>
- <table border="0" cellpadding="3">
+ <table cellpadding="3">
      <tr>
        <th>Name</th>
        <th>Email</th>
@@ -39,9 +50,9 @@ echo $new_lang;
 //create table of matches
 //establish connection info
     $server = "localhost";// your server
-    $userid = "upmro5wv5djmy"; // your user id
-    $pw = "eb4a8d8urcyj"; // your pw
-    $db= "dbdhodggsm9tll"; // your database
+    $userid = "ub32w6yhglqy4"; // your user id
+    $pw = "ilzubcxxbq2v"; // your pw
+    $db= "db0io1fjdknxqw"; // your database
     
     // Create connection
     $conn = new mysqli($server, $userid, $pw);
@@ -50,14 +61,13 @@ echo $new_lang;
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    echo "Connected successfully<br>";
 
     //select the database
     $conn->select_db($db);
     
 
 // ask what the variable names for spoken and new language are
-$sql = "SELECT * FROM users WHERE spoken_lang= $new_lang AND new_lang = $spoken_lang";
+$sql = "SELECT * FROM users WHERE spoken_lang = '$new_lang' AND new_lang = '$spoken_lang'";
 $result = $conn->query($sql);
 
 //get results
@@ -66,8 +76,8 @@ if ($result->num_rows > 0)
 
 while($row = $result->fetch_assoc()) 
 {  
-    echo "<tr><td>$row["name"]</td><td>$row["email"]</td>$row["spoken_lang"]<td></td>".
-    "<td>$row["new_lang"]</td></tr>";
+    echo "<tr><td>".$row["name"]."</td><td><a href='mailto:".$row["email"]."'>".$row["email"]."</a></td><td>".$row["spoken_lang"]."</td>".
+    "<td>".$row["new_lang"]."</td></tr>";
 }
 }
  ?>
