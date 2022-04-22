@@ -1,0 +1,72 @@
+<!doctype html>
+<title>About</title>
+<style>
+ul.nav {font-family: Verdana; text-align: center; list-style-type: none; margin: 0; padding: 0; overflow: 		hidden; background-color: #333333;}
+	li.nav {float: left;}
+	li.nav a {display: block; color: white; text-align: center; padding: 16px; text-decoration: none;}
+	li.nav a:hover {background-color: #111111;}
+body { 
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "ads article"
+    "nav article"
+    "nav footer";
+  grid-template-rows: 80px 120px 1fr 70px;  
+  grid-template-columns: 20% 1fr;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  height: 100vh;
+  margin: 0;
+  }  
+header, footer, article, nav, div {
+  padding: 1.2em;
+  background: lightblue;
+  }
+#pageHeader {
+  grid-area: header;
+  }
+#pageFooter {
+  grid-area: footer;
+  }
+#mainArticle { 
+  grid-area: article;      
+  }
+#mainNav { 
+  grid-area: nav; 
+  }
+#logo { 
+  grid-area: ads; 
+  } 
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+  body { 
+    grid-template-areas: 
+      "header"
+      "article"
+      "ads"
+      "nav"
+      "footer";
+    grid-template-rows: 80px 1fr 70px 1fr 70px;  
+    grid-template-columns: 1fr;
+ }
+}
+</style>
+<body>
+  <header id="pageHeader">
+  <ul class="nav">
+  		<li class="nav"><a href="homepage.html">Home</a></li>  
+    	<li class="nav"><a href="faq.html">FAQ</a></li>
+    	<li class="nav"><a href="about.html">About Us</a></li>
+	</ul></header>
+  
+  <article id="mainArticle"><h2>About</h2>
+	<h3>Our mission is to create a safe, collaborative, and fun experience for Tufts University students and community members who want to learn a new language!
+		We believe the best way to do exactly that is to get the community talking with each other in as many langauges as possible. Our service is simple.
+		Sign up, and get an immediate response from our servers of possible candidates who are willing to chat 1-on-1 in the language of your choice.
+		Want to learn French? Easy! Just sign up, put in French as your requested language and reach out to as many or as few candidates and start
+		mastering as soon as later that day.</h3></article>
+  <!--<nav id="mainNav">Nav</nav> -->
+  <div id="logo">logo</div>
+  <footer id="pageFooter">Questions? See our FAQ or contact us directly at email@email.com</footer>
+</body>
