@@ -1,0 +1,369 @@
+<!doctype html>
+<title>Home Page</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta name="google-signin-scope" content="profile email"> 
+   <meta name="google-signin-client_id" content="1000253772531-eiaseuvik5ju9k8d4i5fjmdil9c42i8d.apps.googleusercontent.com"> <!--Tell google script to interact with google o-auth project-->
+   <script src="https://apis.google.com/js/platform.js" async defer></script> <!--script can load asynchronously-->
+<style>
+ul.nav {font-family: Verdana; text-align: center; list-style-type: none; margin: 0; padding: 0; overflow: 		hidden; background-color: #333333;}
+	li.nav {float: left;}
+	li.nav a {display: block; color: white; text-align: center; padding: 16px; text-decoration: none;}
+	li.nav a:hover {background-color: #111111;}
+body { 
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "ads article"
+    "nav article"
+    "nav footer";
+  grid-template-rows: 80px 120px 1fr 70px;  
+  grid-template-columns: 20% 1fr;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  height: 100vh;
+  margin: 0;
+  }  
+header, footer, article, nav, div {
+  padding: 1.2em;
+  background: lightblue;
+  }
+#pageHeader {
+  grid-area: header;
+  }
+#pageFooter {
+  grid-area: footer;
+  }
+#mainArticle { 
+  grid-area: article;      
+  }
+#mainNav { 
+  grid-area: nav; 
+  }
+#logo { 
+  grid-area: ads; 
+  } 
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+  body { 
+    grid-template-areas: 
+      "header"
+      "article"
+      "ads"
+      "nav"
+      "footer";
+    grid-template-rows: 80px 1fr 70px 1fr 70px;  
+    grid-template-columns: 1fr;
+ }
+}
+.drop-down{
+    margin-top: 10px;
+    margin-left: 110px;
+    display: inline-block;
+}
+.form_item > label { display:inline-block; width:110px; vertical-align:top; }
+.form_item > input { display: inline-block; }
+#submitBtn {
+    background-color: #e7e7e7; 
+    color: black;
+    border: solid 1px;
+    font-weight: bold;
+    padding: 12px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+
+}
+#submitBtn:hover {
+    background-color: #a9a9a9; 
+    
+}
+</style>
+<body>
+  <header id="pageHeader">
+  <ul class="nav">
+  		<li class="nav"><a href="homepage.html">Home</a></li>  
+    	<li class="nav"><a href="faq.html">FAQ</a></li>
+    	<li class="nav"><a href="about.html">About Us</a></li>
+	</ul></header>
+    <script>
+        $(document).ready (function (){  
+        //form validation 
+        $('input[type = "submit"]').click(function(){
+            if (document.getElementsByName("name")[0].value == ""){
+                alert("Must enter a value for the name");
+                document.getElementsByName("name")[0].focus(); 
+                document.getElementsByName("name")[0].select();
+                return false;
+            }
+            var mail = document.getElementsByName("email")[0].value;
+            if ((mail == "") || (mail.includes("@tufts.edu") == false)){
+                alert("Must enter a Tufts email");
+                document.getElementsByName("email")[0].focus(); 
+                document.getElementsByName("email")[0].select();
+                return false;
+            }
+            });
+            });
+    </script>
+  
+  <article id="mainArticle">Welcome! Enter your name, Tufts email, a language you know and a language you want to learn!
+      <form action="register_and_filter.php" method="post">
+          <p class="form_item"><label>Name*:</label> <input type="text"  name='name' /></p>
+          <p class="form_item"><label>Tufts Email*:</label> <input type="text" name='email' /></p>
+          <p class="form_item"><label>Phone:</label> <input type="text" name='phone' /></p>
+          <p><label>Language You Speak:</label> </br>
+          <select size="6" class="drop-down" name="spoken_lang" >
+              <option> Afrikaans </option>
+              <option> Albanian </option>
+              <option> Amharic </option>
+              <option>  Arabic </option>
+              <option> Armenian </option>
+              <option>Azerbaijani </option>
+              <option>Basque </option>
+              <option>Belarusian </option>
+              <option>Bengali </option>
+              <option>Bosnian </option>
+              <option>Bulgarian </option>
+              <option>Burmese </option>
+              <option>Cantonese</option>
+               <option>Catalan </option>
+               <option>Cebuano </option>
+                <option>Chewa </option>
+                <option>Corsican </option>
+                <option>Croatian </option>
+                <option>Czech </option>
+                  <option>Danish </option>
+                  <option>Dutch </option>
+                  <option>English </option>
+                  <option>Esperanto </option>
+                  <option>Estonian </option>
+                  <option>Filipino (Tagalog) </option>
+                  <option>Finnish </option>
+                  <option>French </option>
+                  <option>Galician </option>
+                  <option>Georgian </option>
+                  <option>German </option>
+                  <option>Greek </option>
+                  <option>Gujarati </option>
+                  <option>Haitian Creole </option>
+                  <option>Hausa </option>
+                  <option>Hawaiian </option>
+                  <option>Hebrew </option>
+                  <option>Hindi </option>
+                  <option>Hmong </option>
+                  <option>Hungarian </option>
+                  <option>Icelandic </option>
+                  <option>Igbo</option> 
+                  <option>Indonesian </option>
+                  <option>Irish </option>
+                  <option>Italian </option>
+                  <option>Japanese </option>
+                  <option>Javanese </option>
+                  <option>Kannada </option>
+                  <option>Kazakh </option>
+                  <option>Khmer</option> 
+                  <option>Kinyarwanda</option> 
+                  <option>Korean </option>
+                  <option>Kurdish (Kurmanji) </option>
+                  <option>Kyrgyz </option>
+                  <option>Lao </option>
+                  <option>Latin</option> 
+                  <option>Latvian</option> 
+                  <option>Lithuanian </option>
+                  <option>Luxembourgish</option> 
+                  <option>Macedonian </option>
+                  <option>Malagasy</option> 
+                  <option>Malayalam </option>
+                  <option>Maltese</option>
+                  <option>Mandarin</option> 
+                  <option>Maori </option>
+                  <option>Marathi</option> 
+                  <option>Mongolian</option> 
+                  <option>Nepali </option>
+                  <option>Norwegian (Bokmål) </option>
+                  <option>Odia</option> 
+                  <option>Pashto</option> 
+                  <option>Persian </option>
+                  <option>Polish</option> 
+                  <option>Portuguese </option>
+                  <option>Punjabi (Gurmukhi) </option>
+                  <option>Romanian </option>
+                  <option>Russian </option>
+                  <option>Samoan </option>
+                  <option>Scottish Gaelic </option>
+                  <option>Serbian</option> 
+                  <option>Shona</option> 
+                  <option>Sindhi </option>
+                  <option>Sinhala</option> 
+                  <option>Slovak</option> 
+                  <option>Slovenian</option> 
+                  <option>Somali</option> 
+                  <option>Sotho</option> 
+                  <option>Spanish </option>
+                  <option>Sundanese</option> 
+                  <option>Swahili <option>
+                      <option>Swedish</option> 
+                      <option>Tajik</option> 
+                      <option>Tamil </option>
+                      <option>Tatar</option> 
+                      <option>Telugu</option> 
+                      <option>Thai</option> 
+                      <option>Turkish </option>
+                      <option>Turkmen</option> 
+                      <option>Ukrainian </option>
+                      <option>Urdu</option> 
+                      <option>Uyghur</option> 
+                      <option>Uzbek</option> 
+                      <option>Vietnamese </option>
+                      <option>Welsh</option> 
+                      <option>West Frisian</option> 
+                      <option>Xhosa</option> 
+                      <option>Yiddish</option> 
+                      <option>Yoruba</option> 
+                      <option>Zulu</option> 
+          </select> </p>
+          <p><label>Language You Want to Learn:</label> </br>
+          <select size="6" class="drop-down" name="new_lang">
+              <option> Afrikaans </option>
+              <option> Albanian </option>
+              <option> Amharic </option>
+              <option>  Arabic </option>
+              <option> Armenian </option>
+              <option>Azerbaijani </option>
+              <option>Basque </option>
+              <option>Belarusian </option>
+              <option>Bengali </option>
+              <option>Bosnian </option>
+              <option>Bulgarian </option>
+              <option>Burmese </option>
+              <option>Cantonese</option>
+               <option>Catalan </option>
+               <option>Cebuano </option>
+                <option>Chewa </option>
+                <option>Corsican </option>
+                <option>Croatian </option>
+                <option>Czech </option>
+                  <option>Danish </option>
+                  <option>Dutch </option>
+                  <option>English </option>
+                  <option>Esperanto </option>
+                  <option>Estonian </option>
+                  <option>Filipino (Tagalog) </option>
+                  <option>Finnish </option>
+                  <option>French </option>
+                  <option>Galician </option>
+                  <option>Georgian </option>
+                  <option>German </option>
+                  <option>Greek </option>
+                  <option>Gujarati </option>
+                  <option>Haitian Creole </option>
+                  <option>Hausa </option>
+                  <option>Hawaiian </option>
+                  <option>Hebrew </option>
+                  <option>Hindi </option>
+                  <option>Hmong </option>
+                  <option>Hungarian </option>
+                  <option>Icelandic </option>
+                  <option>Igbo</option> 
+                  <option>Indonesian </option>
+                  <option>Irish </option>
+                  <option>Italian </option>
+                  <option>Japanese </option>
+                  <option>Javanese </option>
+                  <option>Kannada </option>
+                  <option>Kazakh </option>
+                  <option>Khmer</option> 
+                  <option>Kinyarwanda</option> 
+                  <option>Korean </option>
+                  <option>Kurdish (Kurmanji) </option>
+                  <option>Kyrgyz </option>
+                  <option>Lao </option>
+                  <option>Latin</option> 
+                  <option>Latvian</option> 
+                  <option>Lithuanian </option>
+                  <option>Luxembourgish</option> 
+                  <option>Macedonian </option>
+                  <option>Malagasy</option> 
+                  <option>Malayalam </option>
+                  <option>Maltese</option>
+                  <option>Mandarin</option> 
+                  <option>Maori </option>
+                  <option>Marathi</option> 
+                  <option>Mongolian</option> 
+                  <option>Nepali </option>
+                  <option>Norwegian (Bokmål) </option>
+                  <option>Odia</option> 
+                  <option>Pashto</option> 
+                  <option>Persian </option>
+                  <option>Polish</option> 
+                  <option>Portuguese </option>
+                  <option>Punjabi (Gurmukhi) </option>
+                  <option>Romanian </option>
+                  <option>Russian </option>
+                  <option>Samoan </option>
+                  <option>Scottish Gaelic </option>
+                  <option>Serbian</option> 
+                  <option>Shona</option> 
+                  <option>Sindhi </option>
+                  <option>Sinhala</option> 
+                  <option>Slovak</option> 
+                  <option>Slovenian</option> 
+                  <option>Somali</option> 
+                  <option>Sotho</option> 
+                  <option>Spanish </option>
+                  <option>Sundanese</option> 
+                  <option>Swahili </option>
+                      <option>Swedish</option> 
+                      <option>Tajik</option> 
+                      <option>Tamil </option>
+                      <option>Tatar</option> 
+                      <option>Telugu</option> 
+                      <option>Thai</option> 
+                      <option>Turkish </option>
+                      <option>Turkmen</option> 
+                      <option>Ukrainian </option>
+                      <option>Urdu</option> 
+                      <option>Uyghur</option> 
+                      <option>Uzbek</option> 
+                      <option>Vietnamese </option>
+                      <option>Welsh</option> 
+                      <option>West Frisian</option> 
+                      <option>Xhosa</option> 
+                      <option>Yiddish</option> 
+                      <option>Yoruba</option> 
+                      <option>Zulu</option> 
+          </select> </p>
+          <input id="submitBtn" type = "submit" value = "Send" />
+      </form></article>
+
+  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <!--Google Sign in Button: Script will look for element with g-signin2 as class and inject javascript-->
+  <script>
+function onSignIn(googleUser) {
+  // Useful data for your client-side scripts:
+  var profile = googleUser.getBasicProfile();
+  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+  console.log('Full Name: ' + profile.getName());
+  console.log('Given Name: ' + profile.getGivenName());
+  console.log('Family Name: ' + profile.getFamilyName());
+  console.log("Image URL: " + profile.getImageUrl());
+  console.log("Email: " + profile.getEmail());
+
+  // The ID token you need to pass to your backend:
+  var id_token = googleUser.getAuthResponse().id_token;
+  console.log("ID Token: " + id_token);
+}
+  
+function signOut() {
+    gapi.auth2.getAuthInstance().signOut().then(function() {
+        console.log('user signed out');
+    })
+}
+</script> 
+    <button onclick="signOut()">Sign Out</button>
+  <!--<nav id="mainNav">Nav</nav> -->
+  <div id="logo">logo</div>
+  <footer id="pageFooter">Questions? See our FAQ or contact us directly at email@email.com</footer>
+</body>
+</html>
