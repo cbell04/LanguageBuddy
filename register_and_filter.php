@@ -65,6 +65,10 @@ $new_lang = $_REQUEST["new_lang"];
     //select the database
     $conn->select_db($db);
     
+// add user to database
+$insert = "INSERT INTO `users` (`id`, `name`, `email`, `spoken_lang`, `new_lang`) VALUES (NULL, '$name', '$email', '$spoken_lang', '$new_lang');";
+$add = $conn->query($insert);
+
 
 // ask what the variable names for spoken and new language are
 $sql = "SELECT * FROM users WHERE spoken_lang = '$new_lang' AND new_lang = '$spoken_lang'";
@@ -79,6 +83,8 @@ while($row = $result->fetch_assoc())
     echo "<tr><td>".$row["name"]."</td><td><a href='mailto:".$row["email"]."'>".$row["email"]."</a></td><td>".$row["spoken_lang"]."</td>".
     "<td>".$row["new_lang"]."</td></tr>";
 }
+} else if ($result->num_rows == 0) {
+    echo "<tr><td>Sorry, we found no matches in our database. Check back soon! </td></tr>";
 }
  ?>
 </table>
